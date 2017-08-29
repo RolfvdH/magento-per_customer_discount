@@ -18,11 +18,11 @@ $attributeGroupId = $setup->getDefaultAttributeGroupId($entityTypeId, $attribute
 $setup->addAttribute('customer', 'per_cust_discount', array(
     'input'         => 'text',
     'type'          => 'int',
-    'label'         => 'Customer Specific Discount',
+    'label'         => Mage::helper('core')->__('Customer Specific Discount'),
     'visible'       => 1,
     'required'      => 0,
     'user_defined' => 1,
-    'note'      => 'Only use whole a number',
+    'note'      => Mage::helper('core')->__('Only use whole a number'),
 ));
 
 $setup->addAttributeToGroup(

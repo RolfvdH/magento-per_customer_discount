@@ -11,6 +11,17 @@
                 <class>Wib_Percustdiscount_Model</class>
             </wbdispatcher>
         </models>
+        <adminhtml>
+            <translate>
+                <modules>
+                    <Wib_Percustdiscount>
+                        <files>
+                            <default>WibPercustdiscount.csv</default>
+                        </files>
+                    </Wib_Percustdiscount>
+                </modules>
+            </translate>
+        </adminhtml>
         <events>
             <catalog_product_get_final_price>
                 <observers>
