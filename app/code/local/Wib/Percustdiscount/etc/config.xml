@@ -5,23 +5,20 @@
             <version>0.1.1</version>
         </Wib_Percustdiscount>
     </modules>
+
     <global>
         <models>
             <wbdispatcher>
                 <class>Wib_Percustdiscount_Model</class>
             </wbdispatcher>
         </models>
-        <adminhtml>
-            <translate>
-                <modules>
-                    <Wib_Percustdiscount>
-                        <files>
-                            <default>WibPercustdiscount.csv</default>
-                        </files>
-                    </Wib_Percustdiscount>
-                </modules>
-            </translate>
-        </adminhtml>
+        
+        <helpers>
+            <percustdiscount>
+                <class>Wib_Percustdiscount_Helper</class>
+            </percustdiscount>
+        </helpers>
+
         <events>
             <catalog_product_get_final_price>
                 <observers>
@@ -65,4 +62,39 @@
             </Percustdiscount_read>
         </resources>
     </global>
+
+    <frontend>
+        <routers>
+            <percustdiscount>
+                <use>standard</use>
+                <args>
+                    <module>Wib_Percustdiscount</module>
+                    <frontname>percustdiscount</frontname>
+                </args>
+            </percustdiscount>
+        </routers>
+    </frontend>
+
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <percustdiscount_options>
+                                            <title>Store Settings Module Section</title>
+                                        </percustdiscount_options>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+
 </config>

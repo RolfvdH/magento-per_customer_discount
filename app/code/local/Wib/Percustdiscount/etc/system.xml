@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <wib translate="label">
+            <label>Wib Extensions</label>
+            <sort_order>9999</sort_order>
+        </wib>
+    </tabs>  
+	<sections>
+        <percustdiscount_settings translate="label" module="percustdiscount">
+            <label>Configuration Per Customer Discount</label>
+            <tab>wib</tab>
+            <sort_order>125</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general>
+                    <label>Discount excludes</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <categories translate="label comment">
+                            <label>Excluded Categories</label>
+                            <comment><![CDATA[Categorie id's excluded from discount, seperated with a comma (,)]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </categories>
+
+                        <special_price translate="label price">
+                            <label>Allow discount on special prices?</label>
+                            <comment><![CDATA[Do you want to allow the customer discount on special prices?]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </special_price>
+                    </fields>
+                </general>
+            </groups>
+        </percustdiscount_settings>
+    </sections> 
+</config>
