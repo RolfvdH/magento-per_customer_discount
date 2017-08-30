@@ -14,6 +14,9 @@ class Wib_Percustdiscount_Model_Observer
 
     public function get_final_list_price($observer)
     {
+        /* Check config of module */
+        $specialAllowed = Mage::getStoreConfig('percustdiscount_settings/general/special_price',Mage::app()->getStore());
+        
         /* Check if the customer is logged in */
 
         if(Mage::getSingleton('customer/session')->isLoggedIn())
