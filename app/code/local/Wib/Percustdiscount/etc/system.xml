@@ -33,7 +33,7 @@
                             <show_in_store>1</show_in_store>
                         </categories>
 
-                        <special_price translate="label price">
+                        <special_price translate="label comment">
                             <label>Allow discount on special prices?</label>
                             <comment><![CDATA[Do you want to allow the customer discount on special prices?]]></comment>
                             <frontend_type>select</frontend_type>
