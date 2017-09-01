@@ -35,7 +35,7 @@
 
                         <special_price translate="label comment">
                             <label>Allow discount on special prices?</label>
-                            <comment><![CDATA[Do you want to allow the customer discount on special prices?]]></comment>
+                            <comment><![CDATA[Do you want to allow the customer discount on special prices? Note: If a product is in a Excluded categorie, no discount will be applied ]]></comment>
                             <frontend_type>select</frontend_type>
                             <sort_order>0</sort_order>
                             <show_in_default>1</show_in_default>
