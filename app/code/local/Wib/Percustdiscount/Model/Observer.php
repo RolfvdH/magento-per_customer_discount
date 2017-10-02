@@ -120,15 +120,46 @@ class Wib_Percustdiscount_Model_Observer
             $product = $event->getProduct();
 
             $productCategories = $product->getCategoryIds();
-            if(!array_intersect($this->getConfig('disallowedCategories'), $productCategories))
-            {
-                // Use Group Price instead of price in case, it falls back to the base price if no group price is available.
-                $product->original_price = $product->getGroupPrice();
 
-                $final_price = $product->original_price * (1 - $customer_discount);
+            	if(!array_intersect($this->getConfig('disallowedCategories'), $productCategories))
+                {
+                	// Not in disallowedCategorie
 
-                $product->setFinalPrice($final_price);
-            }
+                    if(!empty($product->getSpecialPrice()))
+                    {
+                        if($this->getConfig('specialAllowed') == true)
+                        {
+                            // Use SpecialPrice instead of price in case, it falls back to the base price if no group price is available.
+                            $product->original_price = $product->getSpecialPrice();
+                            $final_price = $product->original_price * (1 - $customer_discount);
+                            $product->setFinalPrice($final_price);
+                        }
+                        elseif($this->getConfig('specialAllowed') == false)
+                        {
+                            // Use SpecialPrice instead of price in case, it falls back to the base price if no group price is available.
+                            $product->setFinalPrice($product->getSpecialPrice());
+                        }
+                    }
+                    elseif(empty($product->getSpecialPrice()))
+                    {
+                        // Use Group Price instead of price in case, it falls back to the base price if no group price is available.
+                        $product->original_price = $product->getGroupPrice();
+                        $final_price = $product->original_price * (1 - $customer_discount);
+                        $product->setFinalPrice($final_price);
+                    }
+                }
+                elseif(array_intersect($this->getConfig('disallowedCategories'), $productCategories))
+                {
+                    // IN disallowedCategorie
+                    if(!empty($product->getSpecialPrice())){
+                        // IN disallowedCategorie and specialPrice is NOT empty
+                        $product->setFinalPrice($product->getSpecialPrice());
+                    }
+                    elseif(empty($product->getSpecialPrice())){
+                        // Use Group Price instead of price in case, it falls back to the base price if no group price is available.
+                        $product->setFinalPrice($product->getGroupPrice());
+                    } 
+                }
 
             return $this;
         }
